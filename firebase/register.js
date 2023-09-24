@@ -14,7 +14,7 @@ const handleRegister = () => {
             // Signed in 
             const user = userCredential.user;
             alert(user.email);
-            windows.location = "./index.html";
+            window.location = './index.html';
 
         })
         .catch((error) => {
