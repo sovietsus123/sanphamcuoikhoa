@@ -58,13 +58,13 @@
                     <div class="card border-0 text-center pt-3 mb-4">
                         <div class="card-body">
                             <div class="card-user-avatar">
-                                <img src="../assets/img/avatar5.png" alt="avatar" style="width:120px;" />
+                                <img id="image" alt="avatar" style="width:120px;" />
                                 <button type="button" class="btn btn-secondary btn-sm"><i
                                         class="zmdi zmdi-edit"></i></button>
                             </div>
                             <div class="card-user-detail mt-4">
-                                <h5>Your Name</h5>
-                                <span class="text-muted"><a href="" class="__cf_email__">info@domain.com</a></span>
+                                <h5 id="fullname"></h5>
+                                <span class="text-muted"><a href="" class="__cf_email__" id="email"></a></span>
                                 <p>+628xxxxxxx - Makassar (IDN)</p>
                                 <div class="social">
                                     <a class="icon p-2" href="#" data-toggle="tooltip" title="Facebook"><i
@@ -1030,6 +1030,7 @@
     </div>
     </div>
 
+    <script type="module" src="../firebase/getProfile.js"></script>
     <script src="../assets/vendor/jquery/jquery-3.5.1.min.js"></script>
     <script src="../assets/vendor/bootstrap.bundle.min.js"></script>
     <script src="../assets/vendor/bootstrap-datepicker.min.js"></script>
