@@ -23,7 +23,10 @@
 
 			<div class="nav flex-md-column nav-pills flex-grow-1" role="tablist" aria-orientation="vertical">
 				<a class="mb-xl-3 mb-md-2 nav-link" data-toggle="pill" href="#nav-tab-user" role="tab">
-					<img src="../assets/img/avatar5.png" class="avatar sm rounded-circle" alt="user avatar" />
+					<i class="bi bi-person-fill"></i>
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+						<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+					</svg>
 				</a>
 				<a class="mb-xl-3 mb-md-2 nav-link active" data-toggle="pill" href="#nav-tab-chat" role="tab"><i
 						class="zmdi zmdi-comment-alt"></i></a>
@@ -66,14 +69,13 @@
 					<div class="card border-0 text-center pt-3 mb-4">
 						<div class="card-body">
 							<div class="card-user-avatar">
-								<img src="../assets/img/avatar5.png" alt="avatar" style="width: 150px" />
+								<img id="image" alt="avatar" style="width: 150px" />
 								<button type="button" class="btn btn-secondary btn-sm"><i
 										class="zmdi zmdi-edit"></i></button>
 							</div>
 							<div class="card-user-detail mt-4">
-								<h5>Your Name</h5>
-								<span class="text-muted"><a href="">info@domain.com</a></span>
-								<p>+628xxxxxxx - Makassar (IDN)</p>
+								<h5 id="fullname"></h5>
+								<span class="text-muted"><a href="" id="email">info@domain.com</a></span>
 								<div class="social">
 									<a class="icon p-2" href="#" data-toggle="tooltip" title="Facebook"><i
 											class="zmdi zmdi-facebook-box"></i></a>
@@ -2193,6 +2195,7 @@
 
 	<script src="../assets/js/template.js"></script>
 	<script type="module" src="../firebase/chat.js"></script>
+	<script type="module" src="../firebase/getProfile.js"></script>
 </body>
 
 </html>

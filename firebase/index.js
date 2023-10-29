@@ -8,7 +8,6 @@ const name = () => {
     onAuthStateChanged(auth, (user) => {
         if (user) {
           const uid = user.uid;
-          welcometext.textContent = `Welcome ${user.email} to home page`;
           // ...
         } else {
             window.location = "./login.html";
