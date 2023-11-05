@@ -16,6 +16,7 @@ console.log(userProfile);
 // add the message
 const addMessage = async() => {
     const message = inputMessage.value;
+    inputMessage.value = "";
     await addDoc(ref, {
         content: message,
         sender: userProfile.displayName ? userProfile.displayName : userProfile.email,
@@ -23,7 +24,13 @@ const addMessage = async() => {
         createdAt: serverTimestamp(),
     });
 }
+// send the message
 sendBtn.addEventListener("click", addMessage);
+inputMessage.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+        addMessage();
+    }
+});
 
 const handleDeleteMessage = async (id) => {
   await deleteDoc(doc(db, "messages", id));

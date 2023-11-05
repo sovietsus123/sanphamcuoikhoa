@@ -49,7 +49,7 @@
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <h4 class="mb-0 text-primary">Profile</h4>
                         <div>
-                            <a href="login.html" title="" class="btn btn-dark">Sign Out</a>
+                            <a href="../login.html" title="" class="btn btn-dark">Sign Out</a>
                         </div>
                     </div>
 
@@ -584,7 +584,7 @@
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <input type="text" class="form-control form-control-lg"
-                                                                    placeholder="Enter your name">
+                                                                    placeholder="Enter your name" id="name">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -592,7 +592,7 @@
                                                         <div class="form-group">
                                                             <div class="input-group">
                                                                 <input type="text" class="form-control form-control-lg"
-                                                                    placeholder="Enter phone">
+                                                                    placeholder="Enter Image url" id="photo">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -643,7 +643,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
-                                                        <button type="button" class="btn btn-primary">Update</button>
+                                                        <button type="button" class="btn btn-primary" id="submit-btn">Update</button>
                                                         <button type="button" class="btn btn-warning">Cancel</button>
                                                     </div>
                                                 </form>
@@ -901,13 +901,13 @@
                                                         </div>
                                                         <div class="form-group mb-3">
                                                             <label>New password</label>
-                                                            <input type="email" class="form-control">
+                                                            <input type="email" class="form-control" id="new-password">
                                                         </div>
                                                         <div class="form-group mb-3">
                                                             <label>Confirm password</label>
                                                             <input type="email" class="form-control">
                                                         </div>
-                                                        <button type="button" class="btn btn-primary">Update
+                                                        <button type="button" class="btn btn-primary" id="change-btn">Update
                                                             Password</button>
                                                         <button type="button" class="btn btn-warning">Cancel</button>
                                                     </div>
@@ -948,6 +948,8 @@
     <script src="../assets/vendor/bootstrap.bundle.min.js"></script>
     <script src="../assets/vendor/bootstrap-datepicker.min.js"></script>
     <script src="../assets/js/template.js"></script>
+    <script type="module" src="../firebase/profileUpdate.js"></script>
+    <script type="module" src="../firebase/changePassword.js"></script>
 
 </body>
 
