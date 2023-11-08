@@ -34,7 +34,6 @@ const handleRegister = () => {
                 displayName,
                 photoURL
             }
-            addUser(user);
             localStorage.setItem("currentUser", JSON.stringify(userProfile));
             alert("Sign in successfully");
             window.location = './login.html';
