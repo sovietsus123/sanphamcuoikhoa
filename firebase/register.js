@@ -9,12 +9,15 @@ const registerBtn = document.getElementById('register-btn');
 const ref = collection(db, "user");
 const q = query(ref, orderBy('createdAt'));
 const addUser = async(user) => {
-    await addDoc(ref, {
-        email: user.email,
-        friends:[],
-        createdAt: serverTimestamp(),
-    });
-}
+    const email = usernameElm.value;
+    if(email.value !== ""){
+        await addDoc(ref, {
+            email: email,
+            friends:[],
+            createdAt: serverTimestamp(),
+        });
+    }
+};
 
 const handleRegister = () => {
     const email = usernameElm.value;
@@ -45,4 +48,5 @@ const handleRegister = () => {
         });
 }
 
+registerBtn.addEventListener('click', addUser);
 registerBtn.addEventListener('click', handleRegister);
