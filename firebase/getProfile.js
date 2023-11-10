@@ -11,8 +11,12 @@ const handleGetProfile = () => {
     onAuthStateChanged(auth, (user) => {
         if (user) {
           Name.innerHTML = user.displayName;
-          Image.src = user.photoURL;
           email.innerHTML = user.email;
+          if(user.photoURL === ""){
+            Image.src = "https://icons.veryicon.com/png/o/miscellaneous/youyinzhibo/guest.png";
+          }else {
+            Image.src = user.photoURL;
+          }
 
         }
       });
