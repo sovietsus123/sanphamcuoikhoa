@@ -18,7 +18,7 @@ const addFriend = async(userEmail) => {
   const qInvite = query(refInvite);
   const sender = localStorage.getItem("currentUser");
   const userProfile = JSON.parse(sender);
-  await addDoc(ref, {
+  await addDoc(refInvite, {
     receiver: userEmail,
     sender: userProfile.email,
     createdAt: serverTimestamp(),
@@ -28,18 +28,20 @@ const addFriend = async(userEmail) => {
 
 const userList = document.getElementById("user-list");
 const renderUser = () => {
-    user.forEach((user) => {
-      userEmail = user.email;
-      const template = document.getElementById('user-template');
-      const userElm = template.content.cloneNode(true); 
-      userElm.getElementById('user-email').textContent = user.email;
-      userList.appendChild(userElm);
-      const addFriendBtn = userElm.getElementById("add-friend")
-      addFriendBtn.addEventListener("click", () => addFriend(userEmail));
-    });
-}
-renderUser();
+  user.forEach((user) => {
+    const userEmail = user.email;
+    const template = document.getElementById('user-template');
+    const userElm = template.content.cloneNode(true); 
+    userElm.getElementById('user-email').textContent = userEmail;
+    userList.appendChild(userElm);
 
+    const addFriendBtn = userElm.getElementById("add-friend");
+    if (addFriendBtn) {
+      addFriendBtn.addEventListener("click", () => addFriend(userEmail));
+    }
+  });
+}
+renderUser(user);
 
 
 
