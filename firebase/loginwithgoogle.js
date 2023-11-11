@@ -36,7 +36,7 @@ const handleLoginWithGoogle = () => {
       }
       localStorage.setItem("currentUser", JSON.stringify(userProfile));
       alert(`${user.email} sign in successfully`)
-      window.location = "./index.html";
+      addUser(user);
       // IdP data available using getAdditionalUserInfo(result)
       // ...
     }).catch((error) => {
