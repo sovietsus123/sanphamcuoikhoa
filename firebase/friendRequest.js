@@ -4,7 +4,7 @@ import { collection, query, getDocs, addDoc, updateDoc, serverTimestamp, where, 
 const sender = localStorage.getItem("currentUser");
 const userProfile = JSON.parse(sender);
 const currentUser = userProfile.email
-const q = query(collection(db, "invite"), where("receiver", "==", userProfile.email));
+const q = query(collection(db, "invite"), where("receiver", "==", currentUser));
 const querySnapshot = await getDocs(q);
 
 const acceptFriend = async (userEmail, currentUser) => {
@@ -30,6 +30,7 @@ const renderRequest = (querySnapshot) => {
     querySnapshot.forEach((doc) => {
         const data = doc.data();
         const userEmail = data.sender;
+        console.log(userEmail);
         const template = document.getElementById("user-template");
         const userElm = template.content.cloneNode(true);
         userElm.getElementById("user-email").textContent = userEmail;

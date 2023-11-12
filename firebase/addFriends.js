@@ -4,7 +4,7 @@ import {
   query,
   getDocs,
   addDoc,
-  serverTimestamp,
+  serverTimestamp, where
 } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-firestore.js";
 
 const user = [];
@@ -15,7 +15,6 @@ querySnapshot.forEach((doc) => {
   const sender = localStorage.getItem("currentUser");
   const userProfile = JSON.parse(sender);
   const userData = doc.data();
-  // Check if user.email is equal to userProfile.email
   if (userData.email !== userProfile.email) {
     user.push(userData);
   }
@@ -24,14 +23,27 @@ console.log(user);
 
 const addFriend = async (userEmail) => {
   const refInvite = collection(db, "invite");
-  const qInvite = query(refInvite);
   const sender = localStorage.getItem("currentUser");
   const userProfile = JSON.parse(sender);
-  await addDoc(refInvite, {
-    receiver: userEmail,
-    sender: userProfile.email,
-    createdAt: serverTimestamp(),
-  });
+
+  // Check if the friend request already exists
+  const inviteQuery = query(refInvite, 
+    where("receiver", "==", userEmail),
+    where("sender", "==", userProfile.email)
+  );
+  
+  const inviteQuerySnapshot = await getDocs(inviteQuery);
+
+  if (inviteQuerySnapshot.empty) {
+    // If the friend request doesn't exist, add it
+    await addDoc(refInvite, {
+      receiver: userEmail,
+      sender: userProfile.email,
+      createdAt: serverTimestamp(),
+    });
+  }else {
+    alert("Friend request already exists");
+  }
 };
 
 const userList = document.getElementById("user-list");
