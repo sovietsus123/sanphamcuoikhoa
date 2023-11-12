@@ -8,20 +8,22 @@ const q = query(collection(db, "invite"), where("receiver", "==", currentUser));
 const querySnapshot = await getDocs(q);
 
 const acceptFriend = async (userEmail, currentUser) => {
-    const userRef = collection(db, "user", currentUser);
+    // Update friend list
+    const userRef = collection(db, "user");
     const userQuery = query(userRef, where("email", "==", currentUser));
-    const userQuerySnapshot = await getDocs(userQuery);
-
-    await updateDoc(userQuerySnapshot, {
+    const data = await getDocs(userQuery);
+    const updateUserRef = doc(db, "user", data.docs[0].id);
+    await updateDoc(updateUserRef, {
         friends: [userEmail]
     });
 
-    const inviteRef = collection(db, "invite");
-    const inviteQuery = query(inviteRef, where("receiver", "==", currentUser), where("sender", "==", userEmail));
-    const inviteQuerySnapshot = await getDocs(inviteQuery);
+    // Xoa invite
+    // const inviteRef = collection(db, "invite");
+    // const inviteQuery = query(inviteRef, where("receiver", "==", currentUser), where("sender", "==", userEmail));
+    // const inviteQuerySnapshot = await getDocs(inviteQuery);
 
-    const inviteDoc = inviteQuerySnapshot.docs[0];
-    await deleteDoc(inviteRef.doc(inviteDoc.id));
+    // const inviteDoc = inviteQuerySnapshot.docs[0];
+    // await deleteDoc(inviteRef.doc(inviteDoc.id));
 }
 
 
