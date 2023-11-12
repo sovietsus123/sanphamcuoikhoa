@@ -1,9 +1,8 @@
-import { auth } from './config.js';
+import { auth, db } from './config.js';
 import {
-  signInWithPopup, GoogleAuthProvider, addDoc,
-  collection,
-  serverTimestamp,
+  signInWithPopup, GoogleAuthProvider
 } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-auth.js";
+import { addDoc,  collection,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.3.1/firebase-firestore.js";
 
 const provider = new GoogleAuthProvider();
 const loginwithgooglebtn = document.getElementById('btn-Google');
@@ -15,7 +14,7 @@ const addUser = async (user) => {
     friends: [],
     createdAt: serverTimestamp(),
   });
-  window.location = "./login.html";
+  window.location = "./index.html";
 };
 
 const handleLoginWithGoogle = () => {
